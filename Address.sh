@@ -65,29 +65,6 @@ function search()
 	grep -i $find $BOOK
 }
 
-function modify()
-{
-        BOOK="address-book.txt"
-
-	echo -ne "\n Enter Name Or Mobile No Of Person's You Want To Modify : "
-        read find_mobile
-
-        len=`grep -i $find_mobile $BOOK`
-
-	if [ $len -ne 0 ]
-	then
-		echo -ne "\n Enter New Address City State Zip "
-                read address city state zip
-		new=`$address $city $state $zip`
-		old=`cat $BOOK | ($address $city $state $zip)`
-
-		sed -i s/"$old"/"$new"/g $BOOK
-		echo -ne "\n Record Modified ..! \n"
-	else
-		echo -ne "\n Mobile Number Not Found "
-	fi
-}
-
 function delete()
 {
 	BOOK="address-book.txt"
